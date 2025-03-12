@@ -1,45 +1,29 @@
-import { useCallback, useEffect, useState } from '@lynx-js/react'
-
-import './App.css'
-import arrow from './assets/arrow.png'
-import lynxLogo from './assets/lynx-logo.png'
-import reactLynxLogo from './assets/react-logo.png'
+import "./App.css";
+import GameCard from "./components/GameCard.jsx";
+import SearchBar from "./components/SearchBar.jsx";
 
 export function App() {
-  const [alterLogo, setAlterLogo] = useState(false)
-
-  useEffect(() => {
-    console.info('Hello, ReactLynx')
-  }, [])
-
-  const onTap = useCallback(() => {
-    'background only'
-    setAlterLogo(!alterLogo)
-  }, [alterLogo])
-
   return (
-    <view>
-      <view className='Background' />
-      <view className='App'>
-        <view className='Banner'>
-          <view className='Logo' bindtap={onTap}>
-            {alterLogo
-              ? <image src={reactLynxLogo} className='Logo--react' />
-              : <image src={lynxLogo} className='Logo--lynx' />}
-          </view>
-          <text className='Title'>React</text>
-          <text className='Subtitle'>on Lynx</text>
-        </view>
-        <view className='Content'>
-          <image src={arrow} className='Arrow' />
-          <text className='Description'>Tap the logo and have fun!</text>
-          <text className='Hint'>
-            Edit<text style={{ fontStyle: 'italic' }}>{' src/App.tsx '}</text>
-            to see updates!
-          </text>
-        </view>
-        <view style={{ flex: 1 }}></view>
-      </view>
+    <view className="container">
+      <SearchBar />
+
+      <list
+        className="list-container"
+        list-type="flow"
+        span-count={2}
+        scroll-orientation="vertical"
+      >
+        {Array.from({ length: 40 }).map((item, index) => {
+          return (
+            <list-item
+              item-key={`list-item-${index}`}
+              key={`list-item-${index}`}
+            >
+              <GameCard />
+            </list-item>
+          );
+        })}
+      </list>
     </view>
-  )
+  );
 }
