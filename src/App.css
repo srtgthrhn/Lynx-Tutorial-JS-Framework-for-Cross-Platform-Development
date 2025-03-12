@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex: 1;
+    padding-top: 60px;
+}
+
+.input {
+    align-self: center;
+    background-color: white;
+    border: 3px solid black;
+    padding: 15px;
+    font-family: "Courier New", monospace;
+    color: black;
+    width: 85%;
+    box-shadow: 8px 8px 0px #f11a7b;
+}

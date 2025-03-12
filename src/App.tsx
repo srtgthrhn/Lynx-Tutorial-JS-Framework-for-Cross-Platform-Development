@@ -1,5 +1,10 @@
 import "./App.css";
+import SearchBar from "./components/SearchBar.jsx";
 
 export function App() {
-  return <view></view>;
+  return (
+    <view className="container">
+      <SearchBar />
+    </view>
+  );
 }
