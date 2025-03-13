@@ -1,12 +1,17 @@
-const GameCard = () => {
+interface GameCardProps {
+  title: string;
+  imageId: string;
+}
+
+const GameCard = ({ title, imageId }: GameCardProps) => {
   return (
     <view className="game-card">
       <image
-        src="https://images.igdb.com/igdb/image/upload/t_cover_big/co9coo.webp"
+        src={`https://images.igdb.com/igdb/image/upload/t_1080p/${imageId}.webp`}
         className="game-image"
       />
 
-      <text className="game-title">Ghost of Yotei</text>
+      <text className="game-title">{title}</text>
     </view>
   );
 };

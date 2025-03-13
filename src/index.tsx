@@ -1,9 +1,16 @@
-import { root } from '@lynx-js/react'
+import { root } from "@lynx-js/react";
 
-import { App } from './App.js'
+import { App } from "./App.js";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-root.render(<App />)
+const queryClient = new QueryClient();
+
+root.render(
+  <QueryClientProvider client={queryClient}>
+    <App />
+  </QueryClientProvider>,
+);
 
 if (import.meta.webpackHot) {
-  import.meta.webpackHot.accept()
+  import.meta.webpackHot.accept();
 }
