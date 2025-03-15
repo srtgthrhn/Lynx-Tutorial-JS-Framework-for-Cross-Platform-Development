@@ -1,5 +1,6 @@
 import "./App.css";
 import GameCard from "./components/GameCard.jsx";
+import Loader from "./components/Loader.jsx";
 import SearchBar from "./components/SearchBar.jsx";
 import useSearchGames from "./hooks/useSearchGames.js";
 
@@ -18,9 +19,7 @@ export function App() {
     );
   }
 
-  if (isPending) {
-    return <text>Loading...</text>;
-  }
+  if (isPending) return <Loader />;
 
   return (
     <view className="container">

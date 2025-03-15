@@ -161,3 +161,33 @@
     aspect-ratio: 16/9;
     border: 3px solid #000;
 }
+
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.loader-text {
+    animation: loader-animation 1.5s infinite;
+    font-weight: bold;
+    font-size: 30px;
+    color: var(--primary-color);
+    text-shadow:
+        2px 2px 4px #0000ff,
+        -2px -2px 4px #00ffff;
+}
+
+@keyframes loader-animation {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+}

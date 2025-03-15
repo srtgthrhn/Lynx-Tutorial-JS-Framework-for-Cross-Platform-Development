@@ -4,6 +4,7 @@ import backIcon from "../assets/back.png";
 import ratingIcon from "../assets/rating.png";
 import GameCard from "../components/GameCard.jsx";
 import { useState } from "@lynx-js/react";
+import Loader from "../components/Loader.jsx";
 
 const GameDetails = () => {
   const { id } = useParams();
@@ -13,7 +14,7 @@ const GameDetails = () => {
 
   const { data, isPending, error } = useGame(id);
 
-  if (isPending) return <text>Loading...</text>;
+  if (isPending) return <Loader />;
   if (error) return <text>Error: {error.message}</text>;
 
   const {
