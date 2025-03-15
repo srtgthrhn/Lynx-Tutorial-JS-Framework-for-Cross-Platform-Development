@@ -1,15 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 
-const useSearchGames = (gameTitle: string) => {
+const useGame = (id: string) => {
   const searchGame = async () => {
-    if (!gameTitle) {
-      return [];
-    }
+    if (!id) return;
 
     const query = `
-      fields name, cover.image_id;
-      search "${gameTitle}";
-      limit 30;
+      fields *, cover.image_id, genres.*, platforms.*, release_dates.date, release_dates.human,
+      involved_companies.company.name,
+      similar_games.name, similar_games.cover.image_id,
+      age_ratings.category, age_ratings.rating, age_ratings.content_descriptions.description,
+      screenshots.image_id;
+      where id = ${id};
     `;
 
     const response = await fetch("https://api.igdb.com/v4/games", {
@@ -26,14 +27,14 @@ const useSearchGames = (gameTitle: string) => {
     }
 
     const data = await response.json();
-    return data;
+    return data[0];
   };
 
   return useQuery({
-    queryKey: ["games", gameTitle],
+    queryKey: ["game", id],
     queryFn: searchGame,
-    enabled: !!gameTitle,
+    enabled: !!id,
   });
 };
 
-export default useSearchGames;
+export default useGame;

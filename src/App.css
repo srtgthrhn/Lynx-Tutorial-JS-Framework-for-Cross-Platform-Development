@@ -7,6 +7,10 @@
     gap: 50px;
 }
 
+:root {
+    --primary-color: #16c47f;
+}
+
 .input {
     align-self: center;
     background-color: white;
@@ -15,7 +19,7 @@
     font-family: "Courier New", monospace;
     color: black;
     width: 85%;
-    box-shadow: 8px 8px 0px #f11a7b;
+    box-shadow: 8px 8px 0px var(--primary-color);
 }
 
 .list-container {
@@ -29,7 +33,7 @@
 .game-card {
     background-color: white;
     border: 3px solid black;
-    box-shadow: 8px 8px 0 #687eff;
+    box-shadow: 8px 8px 0px var(--primary-color);
     width: 150px;
 }
 
@@ -41,5 +45,119 @@
 
 .game-title {
     padding: 10px;
-    font-weight: 800;
+    font-weight: bold;
+}
+
+.game-details-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex: 1;
+    background-color: #fff;
+}
+
+.game-cover {
+    width: 100%;
+    aspect-ratio: 3/4;
+    border-bottom: 4px solid black;
+}
+
+.game-name {
+    font-weight: bold;
+    font-size: 23px;
+}
+.release-date {
+    font-weight: 500;
+}
+
+.developer {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.rating-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.rating {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.rating-icon {
+    width: 30px;
+    aspect-ratio: 1;
+}
+
+.game-summary {
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 60px 0 10px 15px;
+    font-family: "Courier New", monospace;
+    background-color: #000;
+}
+
+.back-button-icon {
+    width: 30px;
+    aspect-ratio: 1;
+}
+
+.back-button-text {
+    font-weight: bold;
+    color: #fff;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    border-bottom: 4px solid black;
+}
+
+.heading {
+    font-weight: bold;
+    font-size: 18px;
+    border-bottom: 3px solid var(--primary-color);
+    align-self: flex-start;
+    padding-bottom: 5px;
+}
+
+.summary {
+    font-size: 15px;
+}
+
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    border: 2px solid #000;
+    padding: 5px 10px;
+    font-weight: 600;
+    background-color: #fff;
+    color: #000;
+}
+
+.screenshots-container {
+    list-main-axis-gap: 15px;
+}
+
+.similar-games-list {
+    list-main-axis-gap: 20px;
+}
+
+.screenshot {
+    width: 230px;
+    aspect-ratio: 16/9;
+    border: 3px solid #000;
 }

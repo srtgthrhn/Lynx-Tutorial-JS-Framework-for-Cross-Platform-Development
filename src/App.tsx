@@ -4,7 +4,7 @@ import SearchBar from "./components/SearchBar.jsx";
 import useSearchGames from "./hooks/useSearchGames.js";
 
 export function App() {
-  const { data, error, isPending } = useSearchGames("Assassin's Creed shadows");
+  const { data, error, isPending } = useSearchGames("assassin's creed");
 
   if (error) {
     return (
@@ -22,8 +22,6 @@ export function App() {
     return <text>Loading...</text>;
   }
 
-  console.log(data);
-
   return (
     <view className="container">
       <SearchBar />
@@ -40,7 +38,11 @@ export function App() {
               item-key={`list-item-${item.id}`}
               key={`list-item-${item.id}`}
             >
-              <GameCard title={item.name} imageId={item.cover?.image_id} />
+              <GameCard
+                title={item.name}
+                imageId={item.cover?.image_id}
+                id={item.id}
+              />
             </list-item>
           );
         })}
