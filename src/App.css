@@ -3,23 +3,25 @@
     flex-direction: column;
     height: 100%;
     flex: 1;
-    padding-top: 60px;
-    gap: 50px;
+    gap: 30px;
 }
 
 :root {
-    --primary-color: #16c47f;
+    --primary-color: #fe115f;
+    --secondary-color: #fffdec;
+}
+
+.input-container {
+    background-color: var(--primary-color);
+    padding: 80px 15px 60px;
+    box-shadow: 5px 5px 0 #000;
 }
 
 .input {
-    align-self: center;
     background-color: white;
-    border: 3px solid black;
+    border: 2px solid black;
     padding: 15px;
-    font-family: "Courier New", monospace;
     color: black;
-    width: 85%;
-    box-shadow: 8px 8px 0px var(--primary-color);
 }
 
 .list-container {
@@ -31,9 +33,8 @@
 }
 
 .game-card {
-    background-color: white;
-    border: 3px solid black;
-    box-shadow: 8px 8px 0px var(--primary-color);
+    background-color: var(--secondary-color);
+    box-shadow: 5px 5px 0px #000;
     width: 150px;
 }
 
@@ -78,7 +79,7 @@
 .rating-container {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
 }
 .rating {
     font-size: 23px;
@@ -86,7 +87,7 @@
 }
 
 .rating-icon {
-    width: 30px;
+    width: 25px;
     aspect-ratio: 1;
 }
 
@@ -100,7 +101,6 @@
     align-items: center;
     gap: 5px;
     padding: 60px 0 10px 15px;
-    font-family: "Courier New", monospace;
     background-color: #000;
 }
 
@@ -119,7 +119,7 @@
     flex-direction: column;
     gap: 15px;
     padding: 15px;
-    border-bottom: 4px solid black;
+    border-bottom: 3px solid black;
 }
 
 .heading {

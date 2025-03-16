@@ -125,7 +125,7 @@ const GameDetails = () => {
           borderBottomWidth: 0,
         }}
       >
-        <text className="heading">SIMILAR GAMES</text>
+        <text className="heading">YOU MAY ALSO LIKE</text>
 
         <list
           scroll-orientation="horizontal"

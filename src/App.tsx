@@ -5,7 +5,7 @@ import SearchBar from "./components/SearchBar.jsx";
 import useSearchGames from "./hooks/useSearchGames.js";
 
 export function App() {
-  const { data, error, isPending } = useSearchGames("assassin's creed");
+  const { data, error, isPending } = useSearchGames("The witcher 3");
 
   if (error) {
     return (
