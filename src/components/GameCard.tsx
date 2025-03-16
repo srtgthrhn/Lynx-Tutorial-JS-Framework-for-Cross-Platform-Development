@@ -1,12 +1,22 @@
-const GameCard = () => {
+import { useNavigate } from "react-router";
+
+interface GameCardProps {
+  id: string;
+  title: string;
+  imageId: string;
+}
+
+const GameCard = ({ id, title, imageId }: GameCardProps) => {
+  const nav = useNavigate();
+
   return (
-    <view className="game-card">
+    <view className="game-card" bindtap={() => nav(`/game-details/${id}`)}>
       <image
-        src="https://images.igdb.com/igdb/image/upload/t_cover_big/co9coo.webp"
+        src={`https://images.igdb.com/igdb/image/upload/t_1080p/${imageId}.webp`}
         className="game-image"
       />
 
-      <text className="game-title">Ghost of Yotei</text>
+      <text className="game-title">{title}</text>
     </view>
   );
 };
