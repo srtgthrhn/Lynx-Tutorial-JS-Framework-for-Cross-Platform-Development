@@ -1,16 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 
-const useSearchGames = (gameTitle: string) => {
-  const searchGame = async () => {
-    if (!gameTitle) {
+const useGameQuery = (query: string) => {
+  const getQueriedGames = async () => {
+    if (!query) {
       return [];
     }
-
-    const query = `
-      fields name, cover.image_id;
-      search "${gameTitle}";
-      limit 30;
-    `;
 
     const response = await fetch("https://api.igdb.com/v4/games", {
       method: "POST",
@@ -30,10 +24,12 @@ const useSearchGames = (gameTitle: string) => {
   };
 
   return useQuery({
-    queryKey: ["games", gameTitle],
-    queryFn: searchGame,
-    enabled: !!gameTitle,
+    queryKey: ["gameQuery", query],
+    queryFn: getQueriedGames,
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+    staleTime: Infinity,
   });
 };
 
-export default useSearchGames;
+export default useGameQuery;

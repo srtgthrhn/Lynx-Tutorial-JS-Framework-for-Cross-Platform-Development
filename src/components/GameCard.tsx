@@ -16,7 +16,9 @@ const GameCard = ({ id, title, imageId }: GameCardProps) => {
         className="game-image"
       />
 
-      <text className="game-title">{title}</text>
+      <text className="game-title" text-maxline="2">
+        {title}
+      </text>
     </view>
   );
 };
