@@ -1,20 +1,21 @@
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import useGame from "../hooks/useGame.js";
-import backIcon from "../assets/back.png";
 import ratingIcon from "../assets/rating.png";
 import GameCard from "../components/GameCard.jsx";
 import { useState } from "@lynx-js/react";
 import Loader from "../components/Loader.jsx";
+import BackButton from "../components/BackButton.jsx";
+import DateItem from "../components/DateItem.jsx";
 
 const GameDetails = () => {
   const { id } = useParams();
-  const nav = useNavigate();
 
   const [maxLine, setMaxLine] = useState("5");
 
   const { data, isPending, error } = useGame(id);
 
   if (isPending) return <Loader />;
+
   if (error) return <text>Error: {error.message}</text>;
 
   const {
@@ -31,39 +32,33 @@ const GameDetails = () => {
   } = data;
 
   return (
-    <scroll-view
-      scroll-orientation="vertical"
-      className="game-details-container"
-    >
-      <view bindtap={() => nav("/")} className="back-button">
-        <image src={backIcon} className="back-button-icon" />
-        <text className="back-button-text">Back</text>
-      </view>
+    <scroll-view scroll-orientation="vertical" className="container">
+      <view className="game-details-container">
+        <BackButton />
 
-      <image
-        src={`https://images.igdb.com/igdb/image/upload/t_1080p/${cover.image_id}.webp`}
-        className="game-cover border"
-      />
+        <image
+          src={`https://images.igdb.com/igdb/image/upload/t_1080p/${cover.image_id}.webp`}
+          className="game-cover border"
+        />
 
-      <view className="info-container">
-        <text className="game-name">{name}</text>
+        <view className="game-info">
+          <text className="game-name">{name}</text>
+
+          {rating && (
+            <view className="rating-container">
+              <image src={ratingIcon} className="rating-icon" />
+              <text className="rating">{(rating / 10).toFixed(1)}</text>
+            </view>
+          )}
+        </view>
 
         <text className="developer">
           By {involved_companies[0].company.name}
         </text>
 
-        <text className="release-date">{release_dates[0]?.human}</text>
+        <DateItem date={release_dates[0].human} />
 
-        {rating && (
-          <view className="rating-container">
-            <text className="rating">{(rating / 10).toFixed(1)}</text>
-            <image src={ratingIcon} className="rating-icon" />
-          </view>
-        )}
-      </view>
-
-      <view className="info-container">
-        <text className="heading">DESCRIPTION</text>
+        <text className="heading">Description</text>
         <text className="summary" text-maxline={maxLine}>
           {summary}
 
@@ -79,16 +74,14 @@ const GameDetails = () => {
             </text>
           ))}
         </view>
-      </view>
 
-      <view className="info-container">
-        <text className="heading">SCREENSHOTS</text>
+        <text className="heading">Screenshots</text>
 
         <list
           scroll-orientation="horizontal"
           list-type="single"
           span-count={1}
-          className="screenshots-container"
+          className="horizontal-list"
         >
           {screenshots.map((screenshot) => {
             return (
@@ -97,7 +90,6 @@ const GameDetails = () => {
                 key={`list-item-${screenshot.id}`}
               >
                 <image
-                  key={screenshot.id}
                   src={`https://images.igdb.com/igdb/image/upload/t_1080p/${screenshot?.image_id}.webp`}
                   className="screenshot"
                 />
@@ -105,10 +97,8 @@ const GameDetails = () => {
             );
           })}
         </list>
-      </view>
 
-      <view className="info-container">
-        <text className="heading">YOU CAN PLAY ON</text>
+        <text className="heading">You can play on</text>
 
         <view className="genres">
           {platforms.map((platform) => (
@@ -117,36 +107,29 @@ const GameDetails = () => {
             </text>
           ))}
         </view>
-      </view>
 
-      <view
-        className="info-container"
-        style={{
-          borderBottomWidth: 0,
-        }}
-      >
-        <text className="heading">YOU MAY ALSO LIKE</text>
+        <text className="heading">You may also like</text>
 
         <list
           scroll-orientation="horizontal"
           list-type="single"
           span-count={1}
-          className="similar-games-list"
+          className="horizontal-list"
         >
-          {similar_games.map((similar_game) => {
+          {similar_games?.map((game) => {
             return (
               <list-item
-                item-key={`list-item-${similar_game.id}`}
-                key={`list-item-${similar_game.id}`}
+                item-key={`list-item-${game.id}`}
+                key={`list-item-${game.id}`}
                 style={{
                   paddingBottom: "100px",
                 }}
               >
                 <GameCard
-                  key={similar_game.id}
-                  id={similar_game.id}
-                  title={similar_game.name}
-                  imageId={similar_game.cover?.image_id}
+                  key={game.id}
+                  id={game.id}
+                  name={game.name}
+                  imageId={game.cover?.image_id}
                 />
               </list-item>
             );
