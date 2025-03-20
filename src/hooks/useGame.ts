@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 const useGame = (id: string) => {
-  const searchGame = async () => {
+  const getGame = async () => {
     if (!id) return;
 
     const query = `
@@ -32,7 +32,7 @@ const useGame = (id: string) => {
 
   return useQuery({
     queryKey: ["game", id],
-    queryFn: searchGame,
+    queryFn: getGame,
     enabled: !!id,
   });
 };

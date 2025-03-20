@@ -10,13 +10,11 @@ interface IGameSegment {
 const GameSegment = (props: IGameSegment) => {
   const { title, query } = props;
 
-  const { data, isPending, error } = useGameQuery(query);
+  const { data: games, isPending, error } = useGameQuery(query);
 
   if (isPending) return <Loader />;
 
-  if (error) {
-    return <text>Error</text>;
-  }
+  if (error) return <text>Error</text>;
 
   return (
     <view className="game-segment">
@@ -31,7 +29,7 @@ const GameSegment = (props: IGameSegment) => {
           paddingBottom: "10px",
         }}
       >
-        {data.map((game) => {
+        {games.map((game) => {
           return (
             <list-item
               item-key={`list-item-${game.id}`}
@@ -39,7 +37,7 @@ const GameSegment = (props: IGameSegment) => {
             >
               <GameCard
                 id={game.id}
-                title={game.name}
+                name={game.name}
                 imageId={game.cover?.image_id}
               />
             </list-item>
