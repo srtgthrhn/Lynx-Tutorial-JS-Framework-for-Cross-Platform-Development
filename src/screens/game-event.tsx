@@ -3,6 +3,7 @@ import BackButton from "../components/BackButton.jsx";
 import useGameEvent from "../hooks/useGameEvent.js";
 import Loader from "../components/Loader.jsx";
 import GameCard from "../components/GameCard.jsx";
+import DateItem from "../components/DateItem.jsx";
 
 const GameEventScreen = () => {
   const { id } = useParams();
@@ -13,7 +14,7 @@ const GameEventScreen = () => {
 
   if (error) return <text>Error</text>;
 
-  const { name, description, event_logo, games } = event;
+  const { name, description, start_time, event_logo, games } = event;
 
   return (
     <scroll-view className="container" scroll-orientation="vertical">
@@ -28,6 +29,17 @@ const GameEventScreen = () => {
         <text className="event-title" text-maxline="2">
           {name}
         </text>
+
+        <DateItem
+          date={new Date(Number(start_time) * 1000).toLocaleDateString(
+            "en-US",
+            {
+              day: "numeric",
+              month: "short",
+              year: "numeric",
+            },
+          )}
+        />
 
         {description && (
           <text className="event-description">{description}</text>
@@ -48,11 +60,7 @@ const GameEventScreen = () => {
                 item-key={`list-item-${game.id}`}
                 key={`list-item-${game.id}`}
               >
-                <GameCard
-                  title={game.name}
-                  imageId={game.cover.image_id}
-                  id={game.id}
-                />
+                <GameCard {...game} />
               </list-item>
             );
           })}

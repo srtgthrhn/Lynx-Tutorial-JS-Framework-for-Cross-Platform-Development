@@ -1,7 +1,7 @@
 import dateIcon from "../assets/date.png";
 
 interface IDateItem {
-  date: number;
+  date: string;
 }
 
 const DateItem = (props: IDateItem) => {

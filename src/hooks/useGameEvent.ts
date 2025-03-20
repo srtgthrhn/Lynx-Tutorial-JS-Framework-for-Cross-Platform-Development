@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
+import type { IGameEvent } from "../types.js";
 
 const useGameEvent = (id: string) => {
-  const getGameEvent = async () => {
+  const getGameEvent = async (): Promise<IGameEvent> => {
     const query = `
       fields id, name, description, event_logo.image_id, start_time, games.cover.image_id, games.name;
       where id=${id};
