@@ -1,7 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
+import type { IGame } from "../types.js";
 
 const useGameQuery = (query: string) => {
-  const getQueriedGames = async () => {
+  const getQueriedGames = async (): Promise<
+    Pick<IGame, "id" | "name" | "cover">[]
+  > => {
     if (!query) {
       return [];
     }

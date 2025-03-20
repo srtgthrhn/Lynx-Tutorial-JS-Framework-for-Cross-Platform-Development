@@ -12,7 +12,7 @@ const GameDetails = () => {
 
   const [maxLine, setMaxLine] = useState("5");
 
-  const { data, isPending, error } = useGame(id);
+  const { data: game, isPending, error } = useGame(id);
 
   if (isPending) return <Loader />;
 
@@ -29,7 +29,7 @@ const GameDetails = () => {
     platforms,
     involved_companies,
     similar_games,
-  } = data;
+  } = game;
 
   return (
     <scroll-view scroll-orientation="vertical" className="container">
@@ -53,10 +53,10 @@ const GameDetails = () => {
         </view>
 
         <text className="developer">
-          By {involved_companies[0].company.name}
+          By {involved_companies[0]?.company?.name}
         </text>
 
-        <DateItem date={release_dates[0].human} />
+        <DateItem date={release_dates[0]?.human} />
 
         <text className="heading">Description</text>
         <text className="summary" text-maxline={maxLine}>
@@ -83,7 +83,7 @@ const GameDetails = () => {
           span-count={1}
           className="horizontal-list"
         >
-          {screenshots.map((screenshot) => {
+          {screenshots?.map((screenshot) => {
             return (
               <list-item
                 item-key={`list-item-${screenshot.id}`}
@@ -101,7 +101,7 @@ const GameDetails = () => {
         <text className="heading">You can play on</text>
 
         <view className="genres">
-          {platforms.map((platform) => (
+          {platforms?.map((platform) => (
             <text key={platform.id} className="tag">
               {platform.name}
             </text>
@@ -125,12 +125,7 @@ const GameDetails = () => {
                   paddingBottom: "100px",
                 }}
               >
-                <GameCard
-                  key={game.id}
-                  id={game.id}
-                  name={game.name}
-                  imageId={game.cover?.image_id}
-                />
+                <GameCard {...game} />
               </list-item>
             );
           })}

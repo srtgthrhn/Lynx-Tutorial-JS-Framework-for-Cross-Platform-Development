@@ -1,14 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
+import type { IGame } from "../types.js";
 
 const useGame = (id: string) => {
-  const getGame = async () => {
-    if (!id) return;
-
+  const getGame = async (): Promise<IGame> => {
     const query = `
-      fields *, cover.image_id, genres.*, platforms.*, release_dates.date, release_dates.human,
+      fields name, cover.image_id, rating, genres.name, summary, platforms.name, release_dates.human,
       involved_companies.company.name,
       similar_games.name, similar_games.cover.image_id,
-      age_ratings.category, age_ratings.rating, age_ratings.content_descriptions.description,
       screenshots.image_id;
       where id = ${id};
     `;

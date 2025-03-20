@@ -35,11 +35,7 @@ const GameSegment = (props: IGameSegment) => {
               item-key={`list-item-${game.id}`}
               key={`list-item-${game.id}`}
             >
-              <GameCard
-                id={game.id}
-                name={game.name}
-                imageId={game.cover?.image_id}
-              />
+              <GameCard {...game} />
             </list-item>
           );
         })}

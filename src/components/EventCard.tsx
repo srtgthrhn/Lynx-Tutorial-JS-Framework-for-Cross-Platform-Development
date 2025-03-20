@@ -1,16 +1,11 @@
 import { useNavigate } from "react-router";
 import DateItem from "./DateItem.jsx";
 import { handleTapStart, handleTapEnd } from "../utils.js";
+import type { IGameEvent } from "../types.js";
 
-interface IGameEvent {
-  id: string;
-  name: string;
-  event_logo: {
-    image_id: string;
-  };
-  start_time: number;
-}
-const GameEvent = (props: IGameEvent) => {
+const EventCard = (
+  props: Pick<IGameEvent, "id" | "name" | "event_logo" | "start_time">,
+) => {
   const { id, name, event_logo, start_time } = props;
   const nav = useNavigate();
 
@@ -45,4 +40,4 @@ const GameEvent = (props: IGameEvent) => {
   );
 };
 
-export default GameEvent;
+export default EventCard;

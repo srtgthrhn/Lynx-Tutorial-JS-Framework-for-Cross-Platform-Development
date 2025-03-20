@@ -1,5 +1,5 @@
 import useGameEvents from "../hooks/useGameEvents.js";
-import GameEvent from "./GameEvent.jsx";
+import EventCard from "./EventCard.jsx";
 import Loader from "./Loader.jsx";
 
 const GameEvents = () => {
@@ -25,7 +25,7 @@ const GameEvents = () => {
               item-key={`list-item-${event.id}`}
               key={`list-item-${event.id}`}
             >
-              <GameEvent {...event} />
+              <EventCard {...event} />
             </list-item>
           );
         })}
