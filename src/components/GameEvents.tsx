@@ -1,6 +1,6 @@
-import useGameEvents from "../hooks/useGameEvents.js";
-import EventCard from "./EventCard.jsx";
-import Loader from "./Loader.jsx";
+import useGameEvents from "../hooks/useGameEvents.ts";
+import EventCard from "./EventCard.tsx";
+import Loader from "./Loader.tsx";
 
 const GameEvents = () => {
   const { data: events, isPending, error } = useGameEvents();
@@ -10,7 +10,7 @@ const GameEvents = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <view className="game-segment">
+    <view className="category">
       <text className="heading">Game Events</text>
 
       <list

@@ -2,8 +2,8 @@ import { root } from "@lynx-js/react";
 import { MemoryRouter, Routes, Route } from "react-router";
 import { App } from "./App.js";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import GameDetails from "./screens/game-details.jsx";
-import GameEventScreen from "./screens/game-event.jsx";
+import GameDetails from "./screens/game-details.tsx";
+import GameEventScreen from "./screens/game-event.tsx";
 
 const queryClient = new QueryClient();
 

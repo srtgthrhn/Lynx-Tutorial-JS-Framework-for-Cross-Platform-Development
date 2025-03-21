@@ -1,27 +1,26 @@
 :root {
     --background-color: #fbf8ef;
     --accent-color: #16c47f;
-    --secondary-color: #f11a7b;
 }
 
-.container {
+.scroll-container {
     height: 100%;
     background-color: var(--background-color);
-    padding-top: 60px;
-    padding-bottom: 30px;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
-.game-segments {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding-left: 20px;
-}
-
-.game-segment {
+.scroll-content {
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.category {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 20px;
 }
 
 .card {
@@ -30,46 +29,17 @@
     background-color: #fff;
     border: 1px solid #000;
     border-radius: 15px;
-    width: 150px;
     padding: 15px;
     gap: 10px;
-}
-
-.game-image {
-    width: 100%;
-    aspect-ratio: 3/4;
-    border: 1px solid #000;
-    border-radius: 10px;
 }
 
 .card-title {
     font-weight: 600;
 }
 
-.event-card {
-    width: 300px;
-}
-
-.event-image {
-    width: 100%;
-    aspect-ratio: 16/9;
+.image {
     border: 1px solid #000;
     border-radius: 10px;
-}
-
-.game-details-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-}
-
-.game-cover {
-    width: 60%;
-    aspect-ratio: 3/4;
-    border: 1px solid #000;
-    border-radius: 10px;
-    align-self: center;
 }
 
 .game-info {
@@ -85,25 +55,10 @@
     flex: 1;
 }
 
-.event-title {
-    font-weight: 600;
-    font-size: 25px;
-}
-
-.developer {
-    font-size: 16px;
-    font-weight: 500;
-}
-
 .rating-container {
     display: flex;
     align-items: center;
     gap: 10px;
-}
-
-.rating {
-    font-size: 20px;
-    font-weight: bold;
 }
 
 .rating-icon {
@@ -111,7 +66,17 @@
     aspect-ratio: 1;
 }
 
-.release-date-container {
+.rating {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.developer {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.date-container {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -122,19 +87,23 @@
     background-color: var(--accent-color);
 }
 
-.release-date-icon {
+.date-icon {
     width: 20px;
     aspect-ratio: 1;
 }
 
-.release-date {
+.date {
     font-weight: 500;
     font-size: 12px;
 }
 
-.game-summary {
+.event-title {
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.summary {
     font-size: 15px;
-    margin-top: 10px;
 }
 
 .back-button {
@@ -150,16 +119,11 @@
 }
 
 .heading {
-    font-weight: 600;
     font-size: 18px;
+    font-weight: 600;
 }
 
-.summary,
-.event-description {
-    font-size: 15px;
-}
-
-.genres {
+.tag-container {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -175,12 +139,6 @@
 .horizontal-list {
     list-main-axis-gap: 15px;
     padding-right: 20px;
-}
-
-.screenshot {
-    width: 230px;
-    aspect-ratio: 16/9;
-    border: 1px solid #000;
 }
 
 .loader {
@@ -213,10 +171,8 @@
     }
 }
 
-.event-container {
-    padding: 20px;
-}
-
 .event-status {
-    color: var(--secondary-color);
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 13px;
 }

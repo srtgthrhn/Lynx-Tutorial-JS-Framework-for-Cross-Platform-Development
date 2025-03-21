@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import type { IGameEvent } from "../types.js";
+import type { IGameEvent } from "../types.ts";
 
 const useGameEvents = () => {
   const getGameEvents = async (): Promise<

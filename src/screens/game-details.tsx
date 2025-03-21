@@ -1,11 +1,12 @@
 import { useParams } from "react-router";
-import useGame from "../hooks/useGame.js";
+import useGame from "../hooks/useGame.ts";
 import ratingIcon from "../assets/rating.png";
-import GameCard from "../components/GameCard.jsx";
 import { useState } from "@lynx-js/react";
-import Loader from "../components/Loader.jsx";
-import BackButton from "../components/BackButton.jsx";
-import DateItem from "../components/DateItem.jsx";
+import Loader from "../components/Loader.tsx";
+import BackButton from "../components/BackButton.tsx";
+import DateItem from "../components/DateItem.tsx";
+import GameList from "../components/GameList.tsx";
+import { getImageUrl } from "../utils.ts";
 
 const GameDetails = () => {
   const { id } = useParams();
@@ -32,13 +33,23 @@ const GameDetails = () => {
   } = game;
 
   return (
-    <scroll-view scroll-orientation="vertical" className="container">
-      <view className="game-details-container">
+    <scroll-view scroll-orientation="vertical" className="scroll-container">
+      <view
+        className="scroll-content"
+        style={{
+          padding: "20px",
+        }}
+      >
         <BackButton />
 
         <image
-          src={`https://images.igdb.com/igdb/image/upload/t_1080p/${cover.image_id}.webp`}
-          className="game-cover border"
+          src={getImageUrl(cover?.image_id)}
+          className="image"
+          style={{
+            width: "60%",
+            aspectRatio: 3 / 4,
+            alignSelf: "center",
+          }}
         />
 
         <view className="game-info">
@@ -67,8 +78,8 @@ const GameDetails = () => {
           </inline-truncation>
         </text>
 
-        <view className="genres">
-          {genres.map((genre) => (
+        <view className="tag-container">
+          {genres?.map((genre) => (
             <text key={genre.id} className="tag">
               {genre.name}
             </text>
@@ -90,8 +101,12 @@ const GameDetails = () => {
                 key={`list-item-${screenshot.id}`}
               >
                 <image
-                  src={`https://images.igdb.com/igdb/image/upload/t_1080p/${screenshot?.image_id}.webp`}
-                  className="screenshot"
+                  src={getImageUrl(screenshot?.image_id)}
+                  className="image"
+                  style={{
+                    width: "230px",
+                    aspectRatio: 16 / 9,
+                  }}
                 />
               </list-item>
             );
@@ -100,7 +115,7 @@ const GameDetails = () => {
 
         <text className="heading">You can play on</text>
 
-        <view className="genres">
+        <view className="tag-container">
           {platforms?.map((platform) => (
             <text key={platform.id} className="tag">
               {platform.name}
@@ -110,26 +125,7 @@ const GameDetails = () => {
 
         <text className="heading">You may also like</text>
 
-        <list
-          scroll-orientation="horizontal"
-          list-type="single"
-          span-count={1}
-          className="horizontal-list"
-        >
-          {similar_games?.map((game) => {
-            return (
-              <list-item
-                item-key={`list-item-${game.id}`}
-                key={`list-item-${game.id}`}
-                style={{
-                  paddingBottom: "100px",
-                }}
-              >
-                <GameCard {...game} />
-              </list-item>
-            );
-          })}
-        </list>
+        <GameList games={similar_games} />
       </view>
     </scroll-view>
   );

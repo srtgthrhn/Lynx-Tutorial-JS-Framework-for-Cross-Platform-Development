@@ -1,9 +1,10 @@
 import { useParams } from "react-router";
-import BackButton from "../components/BackButton.jsx";
-import useGameEvent from "../hooks/useGameEvent.js";
-import Loader from "../components/Loader.jsx";
-import GameCard from "../components/GameCard.jsx";
-import DateItem from "../components/DateItem.jsx";
+import BackButton from "../components/BackButton.tsx";
+import useGameEvent from "../hooks/useGameEvent.ts";
+import Loader from "../components/Loader.tsx";
+import DateItem from "../components/DateItem.tsx";
+import GameList from "../components/GameList.tsx";
+import { getImageUrl } from "../utils.ts";
 
 const GameEventScreen = () => {
   const { id } = useParams();
@@ -17,13 +18,22 @@ const GameEventScreen = () => {
   const { name, description, start_time, event_logo, games } = event;
 
   return (
-    <scroll-view className="container" scroll-orientation="vertical">
-      <view className="game-details-container">
+    <scroll-view className="scroll-container" scroll-orientation="vertical">
+      <view
+        className="scroll-content"
+        style={{
+          padding: "20px",
+        }}
+      >
         <BackButton />
 
         <image
-          src={`https://images.igdb.com/igdb/image/upload/t_1080p/${event_logo.image_id}.webp`}
-          className="event-image"
+          src={getImageUrl(event_logo?.image_id)}
+          className="image"
+          style={{
+            width: "100%",
+            aspectRatio: 16 / 9,
+          }}
         />
 
         <text className="event-title" text-maxline="2">
@@ -41,30 +51,9 @@ const GameEventScreen = () => {
           )}
         />
 
-        {description && (
-          <text className="event-description">{description}</text>
-        )}
+        {description && <text className="summary">{description}</text>}
 
-        <list
-          scroll-orientation="horizontal"
-          list-type="single"
-          span-count={1}
-          className="horizontal-list"
-          style={{
-            paddingBottom: "10px",
-          }}
-        >
-          {games?.map((game) => {
-            return (
-              <list-item
-                item-key={`list-item-${game.id}`}
-                key={`list-item-${game.id}`}
-              >
-                <GameCard {...game} />
-              </list-item>
-            );
-          })}
-        </list>
+        <GameList games={games} />
       </view>
     </scroll-view>
   );

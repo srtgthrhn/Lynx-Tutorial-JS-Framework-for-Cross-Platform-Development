@@ -1,6 +1,6 @@
 import backIcon from "../assets/back.png";
 import { useNavigate } from "react-router";
-import { handleTapStart, handleTapEnd } from "../utils.js";
+import { handleTapStart, handleTapEnd } from "../utils.ts";
 
 const BackButton = () => {
   const nav = useNavigate();

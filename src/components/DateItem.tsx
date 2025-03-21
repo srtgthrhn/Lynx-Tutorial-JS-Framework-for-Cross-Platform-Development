@@ -8,9 +8,9 @@ const DateItem = (props: IDateItem) => {
   const { date } = props;
 
   return (
-    <view className="release-date-container">
-      <image src={dateIcon} className="release-date-icon" />
-      <text className="release-date">{date}</text>
+    <view className="date-container">
+      <image src={dateIcon} className="date-icon" />
+      <text className="date">{date}</text>
     </view>
   );
 };

@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router";
-import { handleTapEnd, handleTapStart } from "../utils.js";
-import type { IGame } from "../types.js";
+import { getImageUrl, handleTapEnd, handleTapStart } from "../utils.ts";
+import type { IGamePreview } from "../types.ts";
 
-const GameCard = (props: Pick<IGame, "id" | "name" | "cover">) => {
+const GameCard = (props: IGamePreview) => {
   const { id, name, cover } = props;
 
   const nav = useNavigate();
@@ -10,13 +10,20 @@ const GameCard = (props: Pick<IGame, "id" | "name" | "cover">) => {
   return (
     <view
       className="card"
+      style={{
+        width: "150px",
+      }}
       main-thread:bindtouchstart={handleTapStart}
       main-thread:bindtouchend={handleTapEnd}
       bindtap={() => nav(`/game-details/${id}`)}
     >
       <image
-        src={`https://images.igdb.com/igdb/image/upload/t_1080p/${cover?.image_id}.webp`}
-        className="game-image"
+        src={getImageUrl(cover?.image_id)}
+        className="image"
+        style={{
+          width: "100%",
+          aspectRatio: 3 / 4,
+        }}
       />
 
       <text className="card-title" text-maxline="2">
