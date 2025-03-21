@@ -3,48 +3,44 @@ import GameEvents from "./components/GameEvents.tsx";
 import GameCategory from "./components/GameCategory.tsx";
 
 const currentTimestamp = Math.floor(Date.now() / 1000);
-const endOfYear = Math.floor(
-  new Date(new Date().getFullYear(), 11, 31).getTime() / 1000,
-);
-
-const daysAgo = Math.floor((Date.now() - 90 * 24 * 60 * 60 * 1000) / 1000);
 
 const gameCategories = [
   {
     id: "1",
     title: "Most Anticipated",
     query: `
-      fields name, cover.image_id, hypes, release_dates.date;
-      where hypes > 0 & release_dates.date > ${currentTimestamp};
+      fields id, name, cover.image_id, first_release_date, hypes;
+      where hypes > 0 & first_release_date > ${currentTimestamp};
       sort hypes desc;
-      limit 10;`,
+      limit 20;`,
   },
   {
     id: "2",
-    title: "Coming Soon",
+    title: "Recently Released",
     query: `
-      fields name, cover.image_id, release_dates.date;
-      where release_dates.date > ${currentTimestamp} & release_dates.date <= ${endOfYear};
-      sort release_dates.date asc;
-      limit 10;
+      fields id, name, cover.image_id, first_release_date, rating, rating_count;
+      where first_release_date > ${currentTimestamp - 60 * 60 * 24 * 30 * 3};
+      sort rating_count desc;
+      limit 20;
       `,
   },
   {
     id: "3",
-    title: "Recently Released",
+    title: "Currently Popular",
     query: `
-      fields name, cover.image_id, release_dates.date;
-      where release_dates.date >= ${daysAgo} & release_dates.date < ${currentTimestamp};
-      sort release_dates.date desc;
-      limit 10;
+      fields id, name, cover.image_id, first_release_date, rating, rating_count;
+      where first_release_date > ${currentTimestamp - 60 * 60 * 24 * 365}
+        & rating_count > 50;
+      sort rating_count desc;
+      limit 20;
       `,
   },
   {
     id: "4",
     title: "Top 20",
     query: `
-      fields name, cover.image_id, rating, rating_count;
-      where rating >= 9;
+      fields id, name, cover.image_id, rating, rating_count;
+      where rating >= 90 & rating_count > 50;
       sort rating_count desc;
       limit 20;
       `,
