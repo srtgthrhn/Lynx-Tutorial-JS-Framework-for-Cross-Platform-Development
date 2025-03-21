@@ -1,6 +1,6 @@
 import "./App.css";
-import GameEvents from "./components/GameEvents.jsx";
-import GameSegment from "./components/GameSegment.jsx";
+import GameEvents from "./components/GameEvents.tsx";
+import GameCategory from "./components/GameCategory.tsx";
 
 const currentTimestamp = Math.floor(Date.now() / 1000);
 const endOfYear = Math.floor(
@@ -9,7 +9,7 @@ const endOfYear = Math.floor(
 
 const daysAgo = Math.floor((Date.now() - 90 * 24 * 60 * 60 * 1000) / 1000);
 
-const segmentQueries = [
+const gameCategories = [
   {
     id: "1",
     title: "Most Anticipated",
@@ -53,11 +53,11 @@ const segmentQueries = [
 
 export function App() {
   return (
-    <scroll-view scroll-orientation="vertical" className="container">
-      <view class="game-segments">
+    <scroll-view scroll-orientation="vertical" className="scroll-container">
+      <view class="scroll-content">
         <GameEvents />
-        {segmentQueries.map((query) => {
-          return <GameSegment title={query.title} query={query.query} />;
+        {gameCategories.map((category) => {
+          return <GameCategory title={category.title} query={category.query} />;
         })}
       </view>
     </scroll-view>

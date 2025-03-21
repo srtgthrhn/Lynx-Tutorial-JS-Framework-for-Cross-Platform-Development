@@ -1,9 +1,12 @@
-export interface IGame {
+export interface IGamePreview {
   id: string;
   name: string;
   cover: {
     image_id: string;
   };
+}
+
+export interface IGame extends IGamePreview {
   rating: number;
   release_dates: {
     human: string;
