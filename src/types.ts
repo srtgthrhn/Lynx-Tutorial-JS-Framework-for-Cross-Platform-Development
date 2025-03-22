@@ -31,13 +31,7 @@ export interface IGame extends IGamePreview {
       name: string;
     };
   }[];
-  similar_games: {
-    id: string;
-    name: string;
-    cover: {
-      image_id: string;
-    };
-  }[];
+  similar_games: IGamePreview[];
 }
 
 export interface IGameEvent {
@@ -48,11 +42,5 @@ export interface IGameEvent {
     image_id: string;
   };
   start_time: string;
-  games: {
-    id: string;
-    cover: {
-      image_id: string;
-    };
-    name: string;
-  }[];
+  games: IGamePreview[];
 }
