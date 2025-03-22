@@ -1,4 +1,4 @@
-<img src=".src/assets/logo.png" alt="Lynx Game Search" width="200" height="200"/>
+<img src="src/assets/logo.png" alt="Lynx Game Search" width="200" height="200"/>
 
 # Lynx Game Search
 
