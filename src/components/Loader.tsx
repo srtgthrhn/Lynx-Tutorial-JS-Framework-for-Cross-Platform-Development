@@ -1,9 +1,5 @@
 const Loader = () => {
-  return (
-    <view className="loader">
-      <text className="loader-text">Loading...</text>
-    </view>
-  );
+  return <view className="loader" />;
 };
 
 export default Loader;
