@@ -7,7 +7,7 @@ const GameEvents = () => {
 
   if (isPending) return <Loader />;
 
-  if (error) return <div>Error: {error.message}</div>;
+  if (error) return <text>Error: {error.message}</text>;
 
   return (
     <view className="category">

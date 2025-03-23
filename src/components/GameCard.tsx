@@ -9,7 +9,7 @@ const GameCard = (props: IGamePreview) => {
 
   return (
     <view
-      className="card"
+      className="card fade-in-scale"
       style={{
         width: "150px",
       }}

@@ -13,7 +13,7 @@ const EventCard = (
 
   return (
     <view
-      className="card"
+      className="card fade-in-scale"
       style={{
         width: "300px",
       }}

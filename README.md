@@ -13,12 +13,12 @@
 
 ### About the App
 
-Lynx Game Search, built with Lynx by ByteDance, is a comprehensive app designed to provide users with detailed information about various games, including game covers, ratings, release dates, screenshots, genres, platforms, developers, and similar games. It also features a list of upcoming and ongoing gaming events, categorized game lists, and a robust search functionality.
+Lynx Game Search, built with Lynx by ByteDance, is a comprehensive app designed to provide users with detailed information about various video games, including game covers, ratings, release dates, screenshots, genres, platforms, developers, and similar games. It also features a list of upcoming and ongoing gaming events, categorized game lists, and a robust search functionality.
 
 ### Key Features
 
 - **Game Details**
-  - Displays game cover, rating, release date, screenshots, genres, platforms, developers, and similar games.
+  - Displays video game cover, rating, release date, screenshots, genres, platforms, developers, and similar games.
 
 - **Gaming Events**
 	- Lists upcoming and ongoing gaming events.
@@ -30,9 +30,12 @@ Lynx Game Search, built with Lynx by ByteDance, is a comprehensive app designed 
 	- Top-Rated (All Time) – Games with a rating of 9+.
 	- Most Anticipated – Upcoming games sorted by hype.
 
+- **IGDB API Integration**
+  - Integrates with the IGDB API, owned by Twitch, to fetch comprehensive game data.
+
 - **Search Functionality**
-  - Users can search for any games in the search screen.
-  - All games matching the search query will be fetched and displayed.
+  - Users can search for any video games in the search screen.
+  - All video games matching the search query will be fetched and displayed.
 
 - **Lynx Dual Thread Architecture**
 	- Main Thread: Handles all UI-related tasks to ensure smooth and responsive user interactions.
