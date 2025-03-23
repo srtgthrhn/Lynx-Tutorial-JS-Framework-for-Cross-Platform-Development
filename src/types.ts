@@ -34,13 +34,16 @@ export interface IGame extends IGamePreview {
   similar_games: IGamePreview[];
 }
 
-export interface IGameEvent {
+export interface IGameEventPreview {
   id: string;
   name: string;
-  description: string;
   event_logo: {
     image_id: string;
   };
   start_time: string;
+}
+
+export interface IGameEvent extends IGameEventPreview {
+  description: string;
   games: IGamePreview[];
 }
