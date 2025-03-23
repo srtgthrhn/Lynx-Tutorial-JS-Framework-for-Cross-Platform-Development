@@ -44,7 +44,7 @@ const GameDetails = () => {
 
         <image
           src={getImageUrl(cover?.image_id)}
-          className="image"
+          className="image flip-in"
           style={{
             width: "60%",
             aspectRatio: 3 / 4,
