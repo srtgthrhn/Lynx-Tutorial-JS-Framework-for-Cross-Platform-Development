@@ -1,10 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import type { IGameEvent } from "../types.ts";
+import type { IGameEventPreview } from "../types.ts";
 
 const useGameEvents = () => {
-  const getGameEvents = async (): Promise<
-    Pick<IGameEvent, "id" | "name" | "event_logo" | "start_time">[]
-  > => {
+  const getGameEvents = async (): Promise<IGameEventPreview[]> => {
     const query = `
       fields id, name, event_logo.image_id, start_time;
       sort start_time desc;

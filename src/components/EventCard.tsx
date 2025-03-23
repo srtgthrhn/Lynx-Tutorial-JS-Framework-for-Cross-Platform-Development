@@ -1,11 +1,9 @@
 import { useNavigate } from "react-router";
 import DateItem from "./DateItem.tsx";
 import { handleTapStart, handleTapEnd, getImageUrl } from "../utils.ts";
-import type { IGameEvent } from "../types.ts";
+import type { IGameEventPreview } from "../types.ts";
 
-const EventCard = (
-  props: Pick<IGameEvent, "id" | "name" | "event_logo" | "start_time">,
-) => {
+const EventCard = (props: IGameEventPreview) => {
   const { id, name, event_logo, start_time } = props;
   const nav = useNavigate();
 
