@@ -2,6 +2,8 @@
 
 # Lynx Game Search
 
+You can watch the tutorial on  [freeCodeCamp.org YouTube channel](https://youtu.be/KCQsP91Wor0?si=hsBe5f7E5D_CZkBL)  where I teach how to build this project.
+
 ## Table of contents
 
 - [Overview](#overview)
